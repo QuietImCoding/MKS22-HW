@@ -52,19 +52,11 @@ public class Board {
 	return solveHelper(0);
     }
 
-    boolean solveHelper(int x) {
-	if (x == board.length-1) {
+    boolean solveHelper(int x, int y) {
+	System.out.println("=========================");
+	printBoard();
+	if (board[x][y] == 0 && x == board.length-1) {
 	    return true;
-	}
-	for (int y = 0; y  < board[0].length; y++) {
-	    if (board[x][y] == 0) {
-		add(x,y);
-		return solveHelper(x+1);
-	    }
-	    if (board[x][y] < 0) {
-		remove(x,y);
-		return false;
-	    }
 	}
 	return false;
     }
