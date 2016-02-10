@@ -48,35 +48,43 @@ public class Board {
 	add(xcor, ycor, -1);
     }
 
+    boolean solve() {
+	return solveHelper(0);
+    }
+
+    boolean solveHelper(int x) {
+	if (x == board.length-1) {
+	    return true;
+	}
+	for (int y = 0; y  < board[0].length; y++) {
+	    if (board[x][y] == 0) {
+		add(x,y);
+		return solveHelper(x+1);
+	    }
+	    if (board[x][y] < 0) {
+		remove(x,y);
+		return false;
+	    }
+	}
+	return false;
+    }
+
     void printBoard() {
 	String s = "";
 	for (int x = 0; x < board.length; x++) {
 	    for (int y = 0; y < board[x].length; y++) {
-		s += board[x][y] + " ";
+		if (board[x][y] == 1) {
+		    s += "Q ";
+		}
+		if (board[x][y] < 0) {
+		    s += "/ ";
+		}
+		if (board[x][y] == 0) {
+		    s += "_ ";
+		}
 	    }
 	    s += "\n";
-	}
-    }
-    
-    void display() {
-	float cellSize;
-	strokeWeight(3);
-	for ( int x = 0; x < board.length; x++ ) {
-	    for ( int y = 0; y < board[x].length; y++ ) {
-		cellSize = (float)width/board.length;
-		stroke(0);
-		fill(255 * ((x + y + 1) % 2));
-		rect(x * cellSize, y * cellSize, cellSize, cellSize);
-		if ( board[x][y] < 0 ) {
-		    stroke(255, 0, 5 * abs(board[x][y]));
-		    line(x * cellSize, y * cellSize, (x + 1) * cellSize, (y + 1) * cellSize);
-		}
-		if ( board[x][y] == 1) {
-		    stroke(255, 0, 0);
-		    fill(255, 0, 0);
-		    ellipse((x * cellSize)+(cellSize/2), (y * cellSize) + (cellSize/2), cellSize/2, cellSize/2);
-		}
-	    }
-	}
+	} 
+	System.out.println(s);
     }
 }

@@ -1,0 +1,6 @@
+public class playQueens {
+    public static main(String[]args) {
+	Board b = new Board(5);
+	b.printBoard();
+    }
+}
