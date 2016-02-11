@@ -13,7 +13,7 @@ public class KnightBoard {
 	move = 1;
     }
 
-    void move(int type) {
+    boolean move(int type) {
 	try {
 	    if (type == 1) {
 		x+=1;
@@ -33,7 +33,17 @@ public class KnightBoard {
 	    } if (type == -3) {
 		x+=1;
 		y-=2;
+	    } if (type == 4) {
+		y+=1; 
+		x+=2;
+	    } if (type == -4) {
+		y-=1;
+		x-=1;
 	    }
+	} catch (ArrayIndexOutOfBoundsException e) {
+	    return false;
+	}
+    }
 
     boolean solve() {
 	return solveHelper(0);
