@@ -12,51 +12,61 @@ public class Board {
 	}
     }
 
-    void add(int xcor, int ycor, int change) {
-	for ( int x = 0; x < board.length; x++ ) {
-	    board[x][ycor] -= change;
+    private boolean add(int row, int col){
+	if(board[row][col] != 0){
+	    return false;
 	}
-	for ( int y = 0; y < board[xcor].length; y++ ) {
-	    board[xcor][y] -= change;
+	board[row][col] = 1;
+	int offset = 1;
+	while(col+offset < board[row].length){
+	    board[row][col+offset]--;
+	    if(row - offset >= 0){
+		board[row-offset][col+offset]--;
+	    }
+	    if(row + offset < board.length){
+		board[row+offset][col+offset]--;
+	    }
+	    offset++;
 	}
-	int d = 1;
-	for ( d = 0; xcor + d < board.length && ycor + d < board[xcor].length; d++ ) {
-	    board[xcor + d][ycor + d] -= change;
-	}
-	for ( d = 0; xcor - d >= 0 && ycor - d >= 0; d++) {
-	    board[xcor-d][ycor-d] -= change;
-	}
-	for ( d = 0; xcor - d >= 0 && ycor + d < board[xcor].length; d++ ) {
-	    board[xcor - d][ycor + d] -= change;
-	}
-	for ( d = 0; xcor + d < board.length && ycor - d >= 0; d++ ) {
-	    board[xcor + d][ycor - d] -= change;
-	}
-	if (change == 1) {
-	    board[xcor][ycor] = 1;
-	} 
-	if (change <= -1 ){
-	    board[xcor][ycor] = 0;
-	}
+	return true;
     }
 
-    void add(int xcor, int ycor) {
-	add(xcor, ycor, 1);
-    }
-
-    void remove(int xcor, int ycor) {
-	add(xcor, ycor, -1);
+    private boolean remove(int row, int col){
+	if(board[row][col] != 1){
+	    return false;
+	}
+	board[row][col] = 0;
+	int offset = 1;
+	while(col+offset < board[row].length){
+	    board[row][col+offset]++;
+	    if(row - offset >= 0){
+		board[row-offset][col+offset]++;
+	    }
+	    if(row + offset < board.length){
+		board[row+offset][col+offset]++;
+	    }
+	    offset++;
+	}
+	return true;
     }
 
     boolean solve() {
 	return solveHelper(0);
     }
 
-    boolean solveHelper(int x, int y) {
+    boolean solveHelper(int col) {
 	System.out.println("=========================");
 	printBoard();
-	if (board[x][y] == 0 && x == board.length-1) {
+	if (col == board.length) {
 	    return true;
+	}
+	for (int row = 0 ; row < board[0].length; row++) {
+	    if (add(row, col)) {
+		if (solveHelper(col+1)) {
+		    return true;
+		}
+		remove(row, col);
+	    }
 	}
 	return false;
     }
