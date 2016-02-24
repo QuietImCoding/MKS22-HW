@@ -2,6 +2,8 @@ public class Board {
     int n;
     int[][] board; 
 
+    static boolean DEBUG = false;
+
     Board(int n) {
 	this.n = n;
 	board = new int[n][n];
@@ -11,7 +13,6 @@ public class Board {
 	    }
 	}
     }
-
 
 
     private boolean add(int row, int col){
@@ -57,20 +58,19 @@ public class Board {
     }
 
     boolean solveHelper(int col) {
+	if (DEBUG) {
 	System.out.println("=========================");
 	printBoard();
-	for (int row = 0; row < board.length; row++) {
+	}
+	if (col == board.length) {
+	    return true;
+	}
+	for (int row = 0 ; row < board[0].length; row++) {
 	    if (add(row, col)) {
-		if ( col == board.length - 1 ) {
+		if (solveHelper(col+1)) {
 		    return true;
 		}
-		return solveHelper(col+1);
-	    }
-	    if (row == board.length - 1) {
-		while (!remove(row, col)) {
-		    row--;
-		}
-		return solveHelper(col - 1);
+		remove(row, col);
 	    }
 	}
 	return false;
@@ -83,10 +83,10 @@ public class Board {
 		if (board[x][y] == 1) {
 		    s += "Q ";
 		}
-		if (board[x][y] < 0) {
+		if (board[x][y] < 0 && DEBUG) {
 		    s += "/ ";
 		}
-		if (board[x][y] == 0) {
+		if (board[x][y] == 0 || board[x][y] < 0) {
 		    s += "_ ";
 		}
 	    }
