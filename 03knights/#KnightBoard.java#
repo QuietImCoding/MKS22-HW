@@ -18,7 +18,6 @@ public class KnightBoard {
     }
 
     boolean solve() {
-	printBoard();
 	return solveHelper(0,0,1);
     }
 
