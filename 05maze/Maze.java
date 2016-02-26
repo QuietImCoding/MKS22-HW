@@ -24,18 +24,18 @@ public class Maze{
 	String letters = "";
 	int rows = 0;
 	int cols = 0;
+	animate = ani;
 	try {
 	    infile = new Scanner(new File(filename));
 	} catch (FileNotFoundException e) {
 	    System.out.println("You goofed. Pick a valid file");
-	}
-	while ( infile.hasNextLine() ) {
-	    letters += infile.nextLine();
-	    cols++;
-	    rows = infile.nextLine().length();
-	}
+	}	    
 	maze[][] = new char[rows][cols];
-	infile = new Scanner(letters);
+	for (int x = 0; x < board.length; x++) {
+	    for (int y = 0; y < board[0].length; y++) {
+		maze[x][y] = 'f';
+	    }
+	}
     }
 
 
