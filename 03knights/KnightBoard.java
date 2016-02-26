@@ -1,6 +1,6 @@
 public class KnightBoard {
     int[][] board; 
-    static boolean DEBUG = true;
+    static boolean DEBUG = false;
 
     KnightBoard(int rows, int cols) {
 	board = new int[rows][cols];
@@ -18,21 +18,23 @@ public class KnightBoard {
     }
 
     boolean solve() {
-	printBoard();
 	return solveHelper(0,0,1);
     }
 
     boolean solveHelper(int row, int col, int number) {
-	printBoard();
+	//printBoard();
 	debug("====================");
        	if (row >= board.length || row < 0 || col >= board[0].length || col < 0) {
 	    return false;
 	}
-	debug("Row: " + row + ", Col: " + col + ", Number: " + number);
-	if (number == row * col) {
-	    return true;
+	if (board[row][col] != 0) {
+	    return false;
 	}
-	// Rewritten after seeing mr K's code
+	board[row][col] = number;
+	debug("Row: " + row + ", Col: " + col + ", Number: " + number);
+	if (number == board.length * board[0].length) {
+	    return true;
+	} 
 	if (solveHelper(row+2, col+1, number+1) ||
 	    solveHelper(row+2, col-1, number+1) ||
 	    solveHelper(row+1, col+2, number+1) ||
@@ -40,9 +42,8 @@ public class KnightBoard {
 	    solveHelper(row-1, col+2, number+1) ||
 	    solveHelper(row-1, col-2, number+1) ||
 	    solveHelper(row-2, col+1, number+1) ||
-	    solveHelper(row-2, col-1, number+1)) {
-
-	    board[row][col] = number;
+	    solveHelper(row-2, col-1, number+1) ){
+	    return true;
 	} else {
 	    board[row][col] = 0;
 	}
@@ -53,7 +54,12 @@ public class KnightBoard {
 	String s = "";
 	for (int row = 0; row < board.length; row++) {
 	    for (int col = 0; col < board[row].length; col++) {
-		s+= board[row][col] + " ";
+		if(board[row][col] < 10) {
+		    s+=" " + board[row][col] + " ";
+		}
+		else {
+		    s+=board[row][col] + " ";
+		}
 	    }
 	    s += "\n";
 	} 
