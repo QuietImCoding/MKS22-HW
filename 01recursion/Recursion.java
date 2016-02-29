@@ -5,7 +5,10 @@ public class Recursion {
     }
 
     public double sqrt(double n) {
-	return pleaseHelpMeSquareRootsAreHardOMG(n, n/2);
+	if (n > 0) {
+	    return pleaseHelpMeSquareRootsAreHardOMG(n, n/2);
+	}
+	return 0;
     }
 
     public double pleaseHelpMeSquareRootsAreHardOMG(double n, double guess) {
