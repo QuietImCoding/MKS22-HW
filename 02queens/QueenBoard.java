@@ -1,10 +1,10 @@
-public class Board {
+public class QueenBoard {
     int n;
     int[][] board; 
 
     static boolean DEBUG = false;
 
-    Board(int n) {
+    QueenBoard(int n) {
 	this.n = n;
 	board = new int[n][n];
 	for (int x = 0; x < board.length; x++) {
@@ -60,7 +60,7 @@ public class Board {
     boolean solveHelper(int col) {
 	if (DEBUG) {
 	System.out.println("=========================");
-	printBoard();
+	printSolution();
 	}
 	if (col == board.length) {
 	    return true;

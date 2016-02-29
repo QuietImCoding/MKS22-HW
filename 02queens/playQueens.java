@@ -1,7 +1,7 @@
 public class playQueens {
     public static void main(String[]args) {
-	Board b = new Board(10);
-	System.out.println(b.solve());
-	b.printBoard();
+	QueenBoard b = new QueenBoard(4);
+	b.solve();
+	b.printSolution();
     }
 }
