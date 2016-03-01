@@ -1,12 +1,12 @@
-public class Driver05{
+public class Driver{
 
     public static void main(String[]args){
         Maze f;
         f = new Maze("maze.dat",true);//true animates the maze.
-        f.clearTerminal();
+        //f.clearTerminal();
         f.solve();
 
-        f.clearTerminal();
+        //f.clearTerminal();
         System.out.println(f);
     }
 }

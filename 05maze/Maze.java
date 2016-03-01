@@ -7,6 +7,7 @@ public class Maze{
     private char[][]maze;
     private int startx,starty;
     private boolean animate;
+    private static boolean DEBUG = false;
 
     /*Constructor loads a maze text file.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -29,11 +30,21 @@ public class Maze{
 	    infile = new Scanner(new File(filename));
 	} catch (FileNotFoundException e) {
 	    System.out.println("You goofed. Pick a valid file");
-	}	    
-	maze[][] = new char[rows][cols];
-	for (int x = 0; x < board.length; x++) {
-	    for (int y = 0; y < board[0].length; y++) {
-		maze[x][y] = 'f';
+	}
+	while (infile.hasNextLine()) {
+	    rows++;
+	    letters += infile.nextLine();
+	}
+	cols = letters.length()/rows;
+	maze = new char[rows][cols];
+        //System.out.println("ROWS: " + rows + " COLS: " + cols);
+	for (int row = 0; row < rows; row++) {
+	    for (int col = 0; col < cols; col++) {
+		if (letters.charAt((row*cols)+col)=='S') {
+		    startx = col;
+		    starty = row;
+		}
+		maze[row][col] = letters.charAt((row * cols) + col);
 	    }
 	}
     }
@@ -73,9 +84,27 @@ public class Maze{
             System.out.println(this);
             wait(20);
         }
-
-        //COMPLETE SOLVE
-
+	if(maze[y][x]=='#'){
+	    return false;
+	}
+	if(maze[y][x]=='@') {
+	    return false;// maze[y][x]='.';
+	}
+	if(maze[y][x]=='.') {
+	    return false;
+	}
+	if(maze[y][x]=='E') {
+	    return true;
+	}
+	maze[y][x] = '@';
+	if(solve(x+1, y)||
+	   solve(x-1, y)||
+	   solve(x, y-1)||
+	   solve(x, y+1)) {
+	    return true;
+	} else {
+	     maze[y][x] = '.';
+	}
         return false; //so it compiles
     }
 
@@ -93,24 +122,34 @@ public class Maze{
         int maxx = maze.length;
         int maxy = maze[0].length;
         String ans = "";
+	if (!DEBUG) {
+	    if(animate){
 
-        if(animate){
+		ans = "Solving a maze that is " + maxx + " by " + maxy + "\n";
 
-            ans = "Solving a maze that is " + maxx + " by " + maxy + "\n";
-
-        }
-        for(int i = 0; i < maxx * maxy; i++){
-            if(i % maxx == 0 && i != 0){
-                ans += "\n";
-            }
-            char c =  maze[i % maxx][i / maxx];
-            if(c == '#'){
-                ans += color(38,47)+c;
-            }else{
-                ans += color(33,40)+c;
-            }
-        }
-        return HIDE_CURSOR + go(0,0) + ans + "\n" + SHOW_CURSOR + color(37,40);
+	    }
+	    for(int i = 0; i < maxx * maxy; i++){
+		if(i % maxx == 0 && i != 0){
+		    ans += "\n";
+		}
+		char c =  maze[i % maxx][i / maxx];
+		if(c == '#'){
+		    ans += color(38,47)+c;
+		}else{
+		    ans += color(33,40)+c;
+		}
+	    }
+	    return HIDE_CURSOR + go(0,0) + ans + "\n" + SHOW_CURSOR + color(37,40);
+	}
+	else {
+	    for (int row = 0; row < maze.length; row++) {
+		for (int col = 0; col < maze[row].length; col++) {
+		    ans+=maze[row][col];
+		}
+		ans+="\n";
+	    }
+	    return/* HIDE_CURSOR + go(0,0) +*/ ans/* + "\n" + SHOW_CURSOR*/;
+	}
     }
 
 
