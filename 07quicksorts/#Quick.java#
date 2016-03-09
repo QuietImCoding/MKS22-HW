@@ -53,17 +53,13 @@ public class Quick {
 	return right;
     }
     public static int quickselect(int[]data,int k){
-	int left = 0;
-	int right = data.length-1;
-	while(left != right) {
-	    if(partition(data, left, right) > k) {
-		right = partition(data, left,  right);
-	    }
-	    else{
-		left = partition(data, left, right);
-	    }
-	}
-	return data[right];
+	return quickselect(data, k, 0, data.length-1);
+    }
+    public static int quickselect(int[]data,int k,int left, int right) {
+	if (partition(data, left, right) == k) {
+	    return data[partition(data, left, right)];
+	} else {
+	    if (partition(data, left, right) > left
     }
     ///*
     public static void main(String[]args){
@@ -74,6 +70,7 @@ public class Quick {
 	partition(testarray, 0, testarray.length);
 	System.out.println(quickselect(testarray, 1));
     }
+    //*/
 }
 	
 	
