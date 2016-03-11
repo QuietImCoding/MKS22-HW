@@ -14,42 +14,25 @@ public class Quick {
 	    System.out.println(data[data.length-1]+" ]");
 	}
     }
+    private static void swap(int[]data, int a, int b) {
+	int temp = data[b];
+	data[b] = data[a];
+	data[a] = temp;
+    }
     private static int partition(int[]data, int left, int right) {
-	debug(data);
-	int split = (int)(Math.random()*(right-left) + left);
+	int split = left + (int)(Math.random()*(right-left+1));
 	int splitval = data[split];
 	debug("Split: " + split + " SplitVal: " + splitval);
-	data[split] = data[data.length-1];
-	data[data.length-1] = splitval;
-	debug(data);
-	right--;
+	swap(data, left, split);
 	while(left<right) {
-	    //debug(data);
-	    //debug("Left: " + left + "LeftVal: " + data[left]);
-	    //debug("Right: " + right + "RightVal: " +data[right]);
-	    if(data[left]>splitval){
-		while(data[right]>splitval && right >= 0) {
-		    right--;
-		}
-		int templeft = data[left];
-		int tempright = data[right];
-		data[right] = templeft;
-		data[left] = tempright;
+	    debug(left);
+	    if(data[left]<splitval) {
+		right--;
+	    } else {
+		swap(data, left, right);
+		left++;
 	    }
-	    left++;
-	}
-	data[data.length-1]=data[right];
-	data[right]=splitval;
-	// Because I could actually find teh bug in the partition but that would be too much work;
-	try {
-	    if(data[right+1] < data[right]) {
-		data[right] = data[right+1];
-		data[right+1] = splitval;
-	    }
-	} catch (ArrayIndexOutOfBoundsException e) {
-	    return data.length-1;
-	}
-	debug(data);
+	}	
 	return right;
     }
     public static int quickselect(int[]data,int k){
@@ -71,8 +54,11 @@ public class Quick {
 	for (int i = 0; i < testarray.length; i++) {
 	    testarray[i] = (int)(Math.random()*100);
 	}
+	debug(testarray);
 	partition(testarray, 0, testarray.length);
-	System.out.println(quickselect(testarray, 1));
+	//swap(testarray, 0, testarray.length-1);
+	debug(testarray);
+	//System.out.println(quickselect(testarray, 1));
     }
 }
 	
