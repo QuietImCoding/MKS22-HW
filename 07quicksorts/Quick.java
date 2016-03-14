@@ -25,13 +25,11 @@ public class Quick {
 	debug("Split: " + split + " SplitVal: " + splitval);
 	swap(data, left, split);
 	while(left<right) {
-	    debug(left);
-	    if(data[left]<splitval) {
+	    while(data[left]<=splitval && right>0) {
 		right--;
-	    } else {
-		swap(data, left, right);
-		left++;
 	    }
+	    swap(data, left, right);
+	    left++;
 	}	
 	return right;
     }
