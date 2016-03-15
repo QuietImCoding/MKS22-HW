@@ -1,0 +1,11 @@
+public class Driver {
+    public static void main(String[]args) {
+	MyLinkedList l = new MyLinkedList();
+	System.out.println(l.size());
+	for(int i = 0; i < (int)(Math.random()*30); i++) {
+	    l.add((int)(Math.random()*1000));
+	}
+	System.out.println(l);
+	System.out.println("Size: " + l.size());
+    }
+}

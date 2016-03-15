@@ -1,0 +1,16 @@
+public class MyLinkedList {
+    public class LNode {
+	private int value;
+	private LNode next;
+	public LNode(value) {
+	    this.value = value;
+	}
+	public int getValue() {
+	    return value;
+	}
+	public LNode getNext() {
+	    return next;
+	}
+	public void setValue(int value) {
+	    
+}
