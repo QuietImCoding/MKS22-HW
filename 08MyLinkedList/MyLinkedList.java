@@ -25,9 +25,10 @@ public class MyLinkedList {
 
     LNode start;
     
-    public void add(int number) {
+    public boolean add(int number) {
 	if (start == null) {
 	    start = new LNode(number);
+	    return true;
 	} else {
 	    LNode current = start;
 	    while (current.getNext()!=null) {
@@ -35,19 +36,24 @@ public class MyLinkedList {
 	    }
 	    current.setNext(new LNode(number));
 	}
+	return true;
     }
 
     public int indexOf(int number) {
 	LNode current = start;
 	int myindex = 0;
-	while(current.getNext()!=null) {
-	    if(current.getValue == number) {
-		return myindex;
+	if(start!=null) {
+	    while(current.getNext()!=null) {
+		if(current.getValue() == number) {
+		    return myindex;
+		}
+		myindex++;
+		current = current.getNext();
 	    }
-	    myindex++;
 	}
 	return -1;
     }
+    
     public boolean add(int number, int index) {
 	if(index<size()) {
 	    if (index == 0) {
@@ -85,6 +91,44 @@ public class MyLinkedList {
 	}
     }
 
+    public int set(int index, int value) {
+	if(index<size()){
+	    LNode current = start;
+	    int myindex = 0;
+	    while (myindex < index) {
+		current = current.getNext();
+		myindex++;
+	    }
+	    int old = current.getValue();
+	    current.setValue(value);
+	    return old;
+	}
+	return -1;
+    }
+
+    public int remove(int index) {
+	if(index<size()) {
+	    if(index == 0) {
+		int myval = start.getValue();
+		start = start.getNext();
+		return myval;
+	    }
+	    LNode current = start;
+	    int myindex = 0;
+	    while (myindex < index-1) {
+		current = current.getNext();
+		myindex++;
+	    }
+	    if(current.getNext()!=null) {
+		int myval = current.getNext().getValue();
+		current.setNext(current.getNext().getNext());
+		return myval;
+	    }
+	}
+	return -1;
+    }
+	    
+    
     public int size() {
 	if (start == null) {
 	    return 0;
