@@ -24,17 +24,16 @@ public class MyLinkedList {
     }
 
     LNode start;
+    LNode end;
     
     public boolean add(int number) {
 	if (start == null) {
 	    start = new LNode(number);
+	    end = start;
 	    return true;
 	} else {
 	    LNode current = start;
-	    while (current.getNext()!=null) {
-		current = current.getNext();
-	    }
-	    current.setNext(new LNode(number));
+	    end.setNext(new LNode(number));
 	}
 	return true;
     }
