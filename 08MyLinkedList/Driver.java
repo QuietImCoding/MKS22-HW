@@ -18,9 +18,10 @@ public class Driver {
 	l.remove(testelement);
 	System.out.println(l);
 	int addIndex = (int)(Math.random()*l.size());
-	l.add("WITCHCRAFT! I WOULD THINK", addIndex);
-	System.out.println("Added 12345 to " + addIndex);
+	l.add("WITCHCRAFT!", addIndex);
+	System.out.println("Added WITCHRAFT! to " + addIndex);
 	System.out.println(l);
-	System.out.println(l.indexOf("WITCHCRAFT! I WOULD THINK"));
+	System.out.println("Size: " + l.size());
+	System.out.println(l.indexOf("WITCHCRAFT!"));
     }
 }

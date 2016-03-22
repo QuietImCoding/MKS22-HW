@@ -22,11 +22,13 @@ public class MyLinkedList<T> {
 	    this.next = next;
 	}
     }
-
+   
+    int size = 0;
     LNode start;
     LNode end;
     
     public boolean add(T number) {
+	size++;
 	if (start == null) {
 	    start = new LNode(number);
 	    end = start;
@@ -56,6 +58,7 @@ public class MyLinkedList<T> {
     
     public boolean add(T number, int index) {
 	if(index<size()) {
+	    size++;
 	    if (index == 0) {
 		LNode newHead = new LNode(number);
 		newHead.setNext(start);
@@ -112,6 +115,7 @@ public class MyLinkedList<T> {
 
     public T remove(int index) {
 	if(index<size()) {
+	    size--;
 	    if(index == 0) {
 		T myval = start.getValue();
 		start = start.getNext();
@@ -136,6 +140,7 @@ public class MyLinkedList<T> {
 	    
     
     public int size() {
+	/*
 	if (start == null) {
 	    return 0;
 	}
@@ -148,7 +153,8 @@ public class MyLinkedList<T> {
 	    } 
 	    mysize++;
 	    return mysize;
-	}
+	    }*/
+	return size;
     }
 		
 		
