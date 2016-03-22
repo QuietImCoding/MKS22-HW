@@ -1,21 +1,21 @@
-public class MyLinkedList {
+public class MyLinkedList<T> {
 
     private class LNode {
 
-	private int value;
+	private T value;
 
 	private LNode next;
 
-	public LNode(int value) {
+	public LNode(T value) {
 	    this.value = value;
 	}
-	public int getValue() {
+	public T getValue() {
 	    return value;
 	}
 	public LNode getNext() {
 	    return next;
 	}
-	public void setValue(int value) {
+	public void setValue(T value) {
 	    this.value = value;
 	}
 	public void setNext(LNode next) {
@@ -26,24 +26,24 @@ public class MyLinkedList {
     LNode start;
     LNode end;
     
-    public boolean add(int number) {
+    public boolean add(T number) {
 	if (start == null) {
 	    start = new LNode(number);
 	    end = start;
 	    return true;
 	} else {
-	    LNode current = start;
 	    end.setNext(new LNode(number));
+	    end = end.getNext();
 	}
 	return true;
     }
 
-    public int indexOf(int number) {
+    public int indexOf(T number) {
 	LNode current = start;
 	int myindex = 0;
 	if(start!=null) {
 	    while(current.getNext()!=null) {
-		if(current.getValue() == number) {
+		if(current.getValue().equals(number)) {
 		    return myindex;
 		}
 		myindex++;
@@ -51,9 +51,10 @@ public class MyLinkedList {
 	    }
 	}
 	return -1;
+	//throw new YouDunGoofedException();
     }
     
-    public boolean add(int number, int index) {
+    public boolean add(T number, int index) {
 	if(index<size()) {
 	    if (index == 0) {
 		LNode newHead = new LNode(number);
@@ -75,7 +76,7 @@ public class MyLinkedList {
 	return false;
     }
 
-    public int get(int index) {
+    public T get(int index) {
 	if(index<size()){
 	    LNode current = start;
 	    int myindex = 0;
@@ -86,11 +87,13 @@ public class MyLinkedList {
 	    return current.getValue();
 	}
 	else {
-	    return -1;
+	    //System.out.println("mistakes");
+	    return null;
+	    //throw new YouDunGoofedException();
 	}
     }
 
-    public int set(int index, int value) {
+    public T set(int index, T value) {
 	if(index<size()){
 	    LNode current = start;
 	    int myindex = 0;
@@ -98,17 +101,19 @@ public class MyLinkedList {
 		current = current.getNext();
 		myindex++;
 	    }
-	    int old = current.getValue();
+	    T old = current.getValue();
 	    current.setValue(value);
 	    return old;
 	}
-	return -1;
+	//System.out.println("mistakes");
+	return null;
+        //throw new YouDunGoofedException();
     }
 
-    public int remove(int index) {
+    public T remove(int index) {
 	if(index<size()) {
 	    if(index == 0) {
-		int myval = start.getValue();
+		T myval = start.getValue();
 		start = start.getNext();
 		return myval;
 	    }
@@ -118,13 +123,15 @@ public class MyLinkedList {
 		current = current.getNext();
 		myindex++;
 	    }
-	    if(current.getNext()!=null) {
-		int myval = current.getNext().getValue();
+	    if(current.getNext()!= null) {
+		T myval = current.getNext().getValue();
 		current.setNext(current.getNext().getNext());
 		return myval;
 	    }
 	}
-	return -1;
+	//System.out.println("mistakes");
+	return null;
+	//throw new YouDunGoofedException();
     }
 	    
     
@@ -152,7 +159,7 @@ public class MyLinkedList {
 	}
 	String s = "[ ";
 	while(current.getNext()!=null){ 
-	    s += current.getValue() + " ";
+	    s += current.getValue() + ", ";
 	    current = current.getNext();
 	}
 	s+=current.getValue() + " ]";
