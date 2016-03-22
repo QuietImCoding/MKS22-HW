@@ -57,7 +57,7 @@ public class MyLinkedList<T> {
     }
     
     public boolean add(T number, int index) {
-	if(index<size()) {
+	if(index<=size()) {
 	    size++;
 	    if (index == 0) {
 		LNode newHead = new LNode(number);
@@ -123,12 +123,16 @@ public class MyLinkedList<T> {
 	    }
 	    LNode current = start;
 	    int myindex = 0;
-	    while (myindex < index-1) {
+	    while (myindex < index+1) {
 		current = current.getNext();
 		myindex++;
 	    }
 	    if(current.getNext()!= null) {
 		T myval = current.getNext().getValue();
+		if(current.getNext().getNext()==null) {
+		    current.getNext().setNext(null);
+		    return myval;
+		}
 		current.setNext(current.getNext().getNext());
 		return myval;
 	    }

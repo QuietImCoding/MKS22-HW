@@ -22,6 +22,7 @@ public class Driver {
 	System.out.println("Added WITCHRAFT! to " + addIndex);
 	System.out.println(l);
 	System.out.println("Size: " + l.size());
-	System.out.println(l.indexOf("WITCHCRAFT!"));
+	l.remove(l.size()-1);
+	System.out.println(l);
     }
 }
