@@ -1,6 +1,14 @@
 public class ParenDemo {
-    public static void main(String[]args) {
-	System.out.println("not done yet");
+
+    public static void main(String[]args){
+	String input = "()()(([[]]))";
+	if(args.length > 0){
+	    input = args[0];
+	    System.out.println( isMatching(input)); 
+	}else{
+	    System.out.println("Usage:"); 
+	    System.out.println("java ParenDemo \"text\""); 
+	}
     }
 
     public static boolean isOpposite(char a, char b) {
@@ -10,23 +18,17 @@ public class ParenDemo {
     }
 
     public static boolean isMatching(String s) {
-	MyStack<char> Stack = new MyStack<char>();
+	MyStack<Character> Stack = new MyStack<Character>();
 
 	for(int i = 0; i < s.length(); i++) {
-	    if (s.charAt(i)=='('||s.charAt(i)==')'||
-		s.charAt(i)=='['||s.charAt(i)==']'||
-		s.charAt(i)=='{'||s.charAt(i)=='}'){
-		if(Stack.push
+	    char c = s.charAt(i);
+	    if(c=='('||c=='{'||c=='['){
 		Stack.push(s.charAt(i));
 	    }
-	}
-
-	while(Stack.size()>0 && Stack.size()%2==0){
-	    char current = Stack.pop();
-	    if (Stack.peek().isOpposite(current)) {
-		Stack.pop();
+	    if(isOpposite(Stack.peek(), c)){
+		Stack.pop();	    
 	    }
 	}
-	
+	return Stack.isEmpty();
     }
 }

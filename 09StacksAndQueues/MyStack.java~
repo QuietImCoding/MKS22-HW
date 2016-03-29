@@ -1,0 +1,38 @@
+wwimport java.util.*;
+
+public class MyStack<T> {
+    
+    private MyLinkedList<T> q;
+    
+    public MyStack<T>() {
+	q = new MyLinkedList<T>();;
+    }
+
+    void push(T item) {
+	q.add(0,item);
+    }
+
+    T pop() {
+	if(q.size()>0){
+	    return q.remove(0);
+	} else {
+	    throw new NoSuchElementException();
+	}
+    }
+    
+    T peek() {
+	if(q.size()>0) {
+	    return q.get(0);
+	} else {
+	    throw new NoSuchElementException();
+	}
+    }
+
+    int size() {
+	return q.size();
+    }
+
+    boolean isEmpty() {
+	return size() == 0;
+    }
+}

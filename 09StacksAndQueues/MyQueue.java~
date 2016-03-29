@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class MyQueue<T> {
+    
+    private MyLinkedList<T> q;
+
+    public MyQueue<T>() {
+	q = new MyLinkedList<T>();
+    }
+
+    void enqueue(T item) {
+	q.add(item);
+    }
+
+    T dequeue() {
+	return t
+    
+}
