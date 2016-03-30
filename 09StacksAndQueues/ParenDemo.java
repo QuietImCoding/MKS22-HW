@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ParenDemo {
 
     public static void main(String[]args){
@@ -12,9 +14,9 @@ public class ParenDemo {
     }
 
     public static boolean isOpposite(char a, char b) {
-	return (a == '(' && b==')' || a == ')' && b=='('||
-		a == '[' && b==']' || a == ']' && b=='['||
-		a == '{' && b=='}' || a == '}' && b=='{');
+	return (a == '(' && b==')' ||// a == ')' && b=='('||
+		a == '[' && b==']' ||// a == ']' && b=='['||
+		a == '{' && b=='}');// || a == '}' && b=='{');
     }
 
     public static boolean isMatching(String s) {
@@ -25,8 +27,12 @@ public class ParenDemo {
 	    if(c=='('||c=='{'||c=='['){
 		Stack.push(s.charAt(i));
 	    }
-	    if(isOpposite(Stack.peek(), c)){
-		Stack.pop();	    
+	    try {
+		if(isOpposite(Stack.peek(), c)){
+		    Stack.pop();	    
+		}
+	    } catch (NoSuchElementException e) {
+		System.out.println("I haz found: " + c);
 	    }
 	}
 	return Stack.isEmpty();
