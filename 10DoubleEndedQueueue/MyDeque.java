@@ -29,19 +29,27 @@ public class MyDeque<T> {
     }
 
     public T removeFirst() {
-	T first = data[start]
+	T first = (T)data[start];
+	data[start] = null;
+	if(start<data.length){
+	    start++;
+	}
+	else {
+	    start = 0;
+	}
+	return first;
     }
 
     public T removeLast() {
-
+	return null;
     }
 
     public T getFirst() {
-	
+	return null;
     }
 
     public T getLast() {
-
+	return null;
     }
 
     public String toString() {
@@ -52,15 +60,16 @@ public class MyDeque<T> {
 	    } else {
 		s+= data[i];
 	    }
+	    s+=" ";
 	}
 	s+=" ]";
 	return s;
     }
 
     public static void main(String[]args) {
-	MyDeque dq = new MyDeque();
+	MyDeque<Integer> dq = new MyDeque<Integer>();
 	for (int i = 0; i < 8; i++) {
-	    dq.add(10);
+	    dq.addFirst(10);
 	    System.out.println(dq);
 	}
     }
