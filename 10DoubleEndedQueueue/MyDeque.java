@@ -21,7 +21,14 @@ public class MyDeque<T> {
 
     public void grow() {
 	Object[] blub = (T[]) new Object[data.length*2];
-	
+	for(int i = 0; i <= start; i++){
+	    blub[i] = data[i];
+	}
+	for(int j = 0; j < data.length - start - 1; j++) {
+	    blub[blub.length-1-j] = data[data.length-1-j];
+	    end = blub.length-1-j;
+	}
+	data = blub;
     }
     
     public void addFirst(T value) {
@@ -99,8 +106,8 @@ public class MyDeque<T> {
 	    dq.addLast((int)(Math.random()*i));
 	    System.out.println(dq);
 	}
-	//dq.grow();
-	//dq.debug();
+	dq.grow();
+	dq.debug();
 	for (int i = 0; i < 8; i++) {
 	    System.out.println(dq.getLast());
 	    System.out.println(dq.removeLast());
