@@ -99,8 +99,8 @@ public class MyDeque<T> {
 	    dq.addLast(i);
 	    dq.debug();
 	}
-	dq.grow();
-	dq.debug();
+	//dq.grow();
+	//dq.debug();
 	for (int i = 0; i < 8; i++) {
 	    System.out.println(dq.removeLast());
 	    dq.debug();
