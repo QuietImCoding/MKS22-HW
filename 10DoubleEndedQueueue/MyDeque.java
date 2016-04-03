@@ -72,11 +72,11 @@ public class MyDeque<T> {
     }
 
     public T getFirst() {
-	return null;
+	return (T)data[start];
     }
 
     public T getLast() {
-	return null;
+	return (T)data[end];
     }
 
     public String toString() {
@@ -97,13 +97,14 @@ public class MyDeque<T> {
 	MyDeque<Integer> dq = new MyDeque<Integer>();
 	for (int i = 0; i < 8; i++) {
 	    dq.addLast((int)(Math.random()*i));
-	    dq.debug();
+	    System.out.println(dq);
 	}
 	//dq.grow();
 	//dq.debug();
 	for (int i = 0; i < 8; i++) {
+	    System.out.println(dq.getLast());
 	    System.out.println(dq.removeLast());
-	    dq.debug();
+	    System.out.println(dq);
 	}
     }
 }
