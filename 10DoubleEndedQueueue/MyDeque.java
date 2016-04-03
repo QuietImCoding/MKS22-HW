@@ -96,7 +96,7 @@ public class MyDeque<T> {
     public static void main(String[]args) {
 	MyDeque<Integer> dq = new MyDeque<Integer>();
 	for (int i = 0; i < 8; i++) {
-	    dq.addLast(i);
+	    dq.addLast((int)(Math.random()*i));
 	    dq.debug();
 	}
 	//dq.grow();
