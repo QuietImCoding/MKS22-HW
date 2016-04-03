@@ -13,7 +13,7 @@ public class MyDeque<T> {
     
     @SuppressWarnings("unchecked")
     private MyDeque() {
-	data = (T[]) new Object[8];
+	data = (T[]) new Object[4];
 	start = data.length/2;
 	end = data.length/2;
 	size = 0;
@@ -39,6 +39,7 @@ public class MyDeque<T> {
 	}
 	if(data[start]!=null) {
 	    grow();
+	    start = end-1;
 	}
 	data[start] = value;
 	size++;
@@ -50,11 +51,15 @@ public class MyDeque<T> {
 	} else {
 	    end = 0;
 	}
+	if(data[end]!=null) {
+	    grow();
+	}
 	data[end] = value;
 	size++;
     }
 
     public T removeFirst() {
+	if (size==0) throw new NoSuchElementException();
 	if(start>0){
 	    start--;
 	}else{
@@ -67,6 +72,7 @@ public class MyDeque<T> {
     }
 
     public T removeLast() {
+	if (size==0) throw new NoSuchElementException();
 	T last = (T)data[end];
 	data[end]=null;
 	if(end<data.length-1){
@@ -79,10 +85,12 @@ public class MyDeque<T> {
     }
 
     public T getFirst() {
+	if((T)data[start]==null) throw new NoSuchElementException();
 	return (T)data[start];
     }
 
     public T getLast() {
+	if((T)data[start]==null) throw new NoSuchElementException();
 	return (T)data[end];
     }
 
@@ -102,16 +110,15 @@ public class MyDeque<T> {
 
     public static void main(String[]args) {
 	MyDeque<Integer> dq = new MyDeque<Integer>();
-	for (int i = 0; i < 8; i++) {
-	    dq.addLast((int)(Math.random()*i));
+	for (int i = 0; i < 10; i++) {
+	    dq.addFirst((int)(Math.random()*1000));
 	    System.out.println(dq);
 	}
-	dq.grow();
-	dq.debug();
-	for (int i = 0; i < 8; i++) {
-	    System.out.println(dq.getLast());
-	    System.out.println(dq.removeLast());
+	for (int j = 0; j < 10; j++) {
+	    dq.removeFirst();
 	    System.out.println(dq);
 	}
+	//dq.grow();
+	//dq.debug();
     }
 }
