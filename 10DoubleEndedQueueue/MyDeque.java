@@ -5,6 +5,12 @@ public class MyDeque<T> {
     private Object[] data;
     private int start, end, size;
 
+    public void debug() {
+	System.out.println(this);
+	System.out.println("START: " + start);
+	System.out.println("END: " + end);
+    }
+    
     @SuppressWarnings("unchecked")
     private MyDeque() {
 	data = (T[]) new Object[8];
@@ -15,10 +21,7 @@ public class MyDeque<T> {
 
     public void grow() {
 	Object[] blub = (T[]) new Object[data.length*2];
-	for (int i = 0; i < data.length; i++) {
-	    blub[i] = data[i];
-	}
-	data = blub;
+	
     }
     
     public void addFirst(T value) {
@@ -31,6 +34,7 @@ public class MyDeque<T> {
 	    grow();
 	}
 	data[start] = value;
+	size++;
     }
 
     public void addLast(T value) {
@@ -40,6 +44,7 @@ public class MyDeque<T> {
 	    end = 0;
 	}
 	data[end] = value;
+	size++;
     }
 
     public T removeFirst() {
@@ -50,6 +55,7 @@ public class MyDeque<T> {
 	}
 	T first = (T)data[start];
 	data[start]=null;
+	size--;
 	return first;
     }
 
@@ -61,6 +67,7 @@ public class MyDeque<T> {
 	}else{
 	    end = 0;
 	}
+	size--;
 	return last;
     }
 
@@ -89,14 +96,14 @@ public class MyDeque<T> {
     public static void main(String[]args) {
 	MyDeque<Integer> dq = new MyDeque<Integer>();
 	for (int i = 0; i < 8; i++) {
-	    dq.addFirst(i);
-	    System.out.println(dq);
+	    dq.addLast(i);
+	    dq.debug();
 	}
 	dq.grow();
-	System.out.println(dq);
+	dq.debug();
 	for (int i = 0; i < 8; i++) {
 	    System.out.println(dq.removeLast());
-	    System.out.println(dq);
+	    dq.debug();
 	}
     }
 }
