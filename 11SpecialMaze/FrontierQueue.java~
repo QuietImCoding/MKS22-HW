@@ -1,0 +1,12 @@
+public class FrontierQueue<T> implements Frontier<T> {
+    MyQueue<T> queue = new MyQueue<T>();
+    public void add(T element) {
+	queue.enque(element);
+    }
+    public T next() {
+	return queue.deque();
+    }
+    public boolean hasNext() {
+	return stack.size()>1;
+    }
+}
