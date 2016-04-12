@@ -7,6 +7,6 @@ public class FrontierStack<T> implements Frontier<T> {
 	return stack.pop();
     }
     public boolean hasNext() {
-	return stack.size()>1;
+	return stack.size()>0;
     }
 }

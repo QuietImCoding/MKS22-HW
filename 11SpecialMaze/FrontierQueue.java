@@ -7,6 +7,6 @@ public class FrontierQueue<T> implements Frontier<T> {
 	return queue.dequeue();
     }
     public boolean hasNext() {
-	return queue.size()>1;
+	return queue.size()>0;
     }
 }

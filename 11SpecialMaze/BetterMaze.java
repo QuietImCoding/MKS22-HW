@@ -38,13 +38,9 @@ public class BetterMaze {
     **/
 
     public static void main(String[]args) {
-	if(args.length>0) {
-	    BetterMaze b = new BetterMaze(args[0]);
-	    b.setAnimate(true);
-	    b.solveBFS();
-	} else {
-	    System.out.println("Give me some args, human");
-	}
+	BetterMaze b = new BetterMaze("data.dat");
+	b.setAnimate(true);
+	System.out.println(b.solveBFS());
     }
 	    
     public int[] solutionCoordinates(){
@@ -71,30 +67,41 @@ public class BetterMaze {
 	return solve();
     }    
 
+    public ArrayList<Node> getFriends(Node sad) {
+	ArrayList<Node> friends = new ArrayList<Node>();
+	int myX = sad.getX();
+	int myY = sad.getY();
+	if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+	    friends.add(new Node(myX-1, myY, sad));
+	}
+	if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+	    friends.add(new Node(myX+1, myY, sad));
+	}
+	if(maze[myX][myY-1]!='.' && maze[myX][myY-1]!='#') {
+	    friends.add(new Node(myX, myY-1, sad));
+	}
+	if(maze[myX][myY+1]!='.' && maze[myX][myY+1]!='#') {
+	    friends.add(new Node(myX, myY+1, sad));
+	}
+	return friends;
+    }
+	
    /**Search for the end of the maze using the frontier. 
       Keep going until you find a solution or run out of elements on the frontier.
     **/
     private boolean solve(){  
         Node current = new Node(startRow, startCol, null);
 	placesToGo.add(current);
-	while(placesToGo.hasNext() && maze[current.getX()][current.getY()]!='E') {
-	    if(maze[current.getX()-1][current.getY()]!='.' && maze[current.getX()-1][current.getY()]!='#') {
-		placesToGo.add(new Node(current.getX()-1, current.getY(), current));
-		maze[current.getX()-1][current.getY()] = '.';
+	while(placesToGo.hasNext()) {
+	    if (maze[current.getX()][current.getY()]=='E') { 
+		return true;
 	    }
-	    if(maze[current.getX()+1][current.getY()]!='.' && maze[current.getX()+1][current.getY()]!='#') {
-		placesToGo.add(new Node(current.getX()+1, current.getY(), current));
-		maze[current.getX()+1][current.getY()] = '.';
+	    for (Node friend : getFriends(current)) {
+		System.out.println("( " + friend.getX() + ", " + friend.getY() + " )");
+		placesToGo.add(friend);
+		maze[friend.getX()][friend.getY()] = '.';
+		System.out.println(this);
 	    }
-	    if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
-		placesToGo.add(new Node(current.getX(), current.getY()-1, current));
-		maze[current.getX()][current.getY()-1] = '.';
-	    }
-	    if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
-		placesToGo.add(new Node(current.getX(), current.getY()+1, current));
-		maze[current.getX()][current.getY()+1] = '.';
-	    }
-	    System.out.println(this);
 	    current = placesToGo.next();
 	}
 	while(current.getPrev()!=null) {
@@ -102,9 +109,28 @@ public class BetterMaze {
 	    solution.add(0, current.getX());
 	    current = current.getPrev();
 	}
-	return maze[current.getX()][current.getY()]=='E';
+	return false;
     }    
-     
+    
+    /*
+      if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+      placesToGo.add(new Node(myX-1, myY, current));
+      maze[myX-1][myY] = '.';
+      }
+      if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+      placesToGo.add(new Node(myX+1, myY, current));
+      maze[myX][myY] = '.';
+      }
+      if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+      placesToGo.add(new Node(current.getX(), current.getY()-1, current));
+      maze[current.getX()][current.getY()-1] = '.';
+      }
+      if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+      placesToGo.add(new Node(current.getX(), current.getY()+1, current));
+      maze[current.getX()][current.getY()+1] = '.';
+      }
+    */
+
    /**mutator for the animate variable  **/
     public void setAnimate(boolean b){ animate = b; }    
 

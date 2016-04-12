@@ -1,0 +1,508 @@
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze.java
+Error: Could not find or load main class BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze
+Give me some args, human
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S  #
+##### #
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S. #
+##### #
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S. #
+##### #
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #...#
+##### #
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #...#
+##### #
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ###.#
+# #...#
+#####.#
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#    .#
+# ###.#
+# #...#
+#####.#
+#E    #
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#    .#
+# ###.#
+# #...#
+#####.#
+#E   .#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#   ..#
+# ###.#
+# #...#
+#####.#
+#E   .#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#   ..#
+# ###.#
+# #...#
+#####.#
+#E  ..#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#  ...#
+# ###.#
+# #...#
+#####.#
+#E  ..#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#  ...#
+# ###.#
+# #...#
+#####.#
+#E ...#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+# ....#
+# ###.#
+# #...#
+#####.#
+#E ...#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+# ....#
+# ###.#
+# #...#
+#####.#
+#E....#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#.....#
+# ###.#
+# #...#
+#####.#
+#E....#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#.....#
+# ###.#
+# #...#
+#####.#
+#.....#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#.....#
+#.###.#
+# #...#
+#####.#
+ #.....#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#.....#
+#.###.#
+# #...#
+#####.#
+#.....#
+#######
+[?25h
+[?25lSolving a maze that is 7 by 7
+#######
+#.....#
+#.###.#
+#.#...#
+#####.#
+#.....#
+#######
+[?25h
+Exception in thread "main" java.util.NoSuchElementException
+	at MyQueue.dequeue(MyQueue.java:19)
+	at FrontierQueue.next(FrontierQueue.java:7)
+	at BetterMaze.solve(BetterMaze.java:98)
+	at BetterMaze.solveBFS(BetterMaze.java:63)
+	at BetterMaze.main(BetterMaze.java:44)
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:80: error: ')' expected
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                          ^
+BetterMaze.java:80: error: not a statement
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                                                               ^
+BetterMaze.java:80: error: ';' expected
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                                                                    ^
+3 errors
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:80: error: ')' expected
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                          ^
+BetterMaze.java:80: error: not a statement
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                                                               ^
+BetterMaze.java:80: error: ';' expected
+	while(placesToGo.hasNext() maze[current.getX()][current.getY()]!='E') {
+	                                                                    ^
+3 errors
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ 
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:80: error: cannot find symbol
+	while(placesToGo.size > 1) {
+	                ^
+  symbol:   variable size
+  location: variable placesToGo of type Frontier<BetterMaze.Node>
+1 error
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ 
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:80: error: cannot find symbol
+	while(placesToGo.size() > 1) {
+	                ^
+  symbol:   method size()
+  location: variable placesToGo of type Frontier<BetterMaze.Node>
+1 error
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ 
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S  #
+##### #
+#E    #
+#######
+[?25h
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S  #
+##### #
+#E    #
+#######
+[?25h
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ java BetterMaze data.dat
+7 7
+[?25lSolving a maze that is 7 by 7
+#######
+#     #
+# ### #
+# #S  #
+##### #
+#E    #
+#######
+[?25h
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:97: error: illegal start of expression
+	private int myX, myY;
+	^
+1 error
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:76: error: cannot find symbol
+	myX = sad.getX();
+	^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:77: error: cannot find symbol
+	myY = sad.getY();
+	^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:78: error: cannot find symbol
+	if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+	        ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:78: error: cannot find symbol
+	if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+	               ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:78: error: cannot find symbol
+	if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+	                                 ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:78: error: cannot find symbol
+	if(maze[myX-1][myY]!='.' && maze[myX-1][myY]!='#') {
+	                                        ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:79: error: cannot find symbol
+	    friends.add(new Node(myX-1, myY, sad));
+	                         ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:79: error: cannot find symbol
+	    friends.add(new Node(myX-1, myY, sad));
+	                                ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:81: error: cannot find symbol
+	if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+	        ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:81: error: cannot find symbol
+	if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+	               ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:81: error: cannot find symbol
+	if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+	                                 ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:81: error: cannot find symbol
+	if(maze[myX+1][myY]!='.' && maze[myX+1][myY]!='#') {
+	                                        ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:82: error: cannot find symbol
+	    friends.add(new Node(myX+1, myY, sad));
+	                         ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:82: error: cannot find symbol
+	    friends.add(new Node(myX+1, myY, sad));
+	                                ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:85: error: cannot find symbol
+	    friends.add(new Node(myX, myY-1, sad));
+	                         ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:85: error: cannot find symbol
+	    friends.add(new Node(myX, myY-1, sad));
+	                              ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:88: error: cannot find symbol
+	    friends.add(new Node(myX, myY+1, sad));
+	                         ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:88: error: cannot find symbol
+	    friends.add(new Node(myX, myY+1, sad));
+	                              ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:101: error: cannot find symbol
+	    myX = current.getX();
+	    ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:102: error: cannot find symbol
+	    myY = current.getY();
+	    ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	             ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	                  ^
+  symbol:   variable myY
+  location: class BetterMaze
+30 errors
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:84: error: cannot find symbol
+	if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
+	                                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                        ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:87: error: cannot find symbol
+	if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
+	                                                                       ^
+  symbol:   variable current
+  location: class BetterMaze
+BetterMaze.java:101: error: cannot find symbol
+	    myX = current.getX();
+	    ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:102: error: cannot find symbol
+	    myY = current.getY();
+	    ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	             ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	                  ^
+  symbol:   variable myY
+  location: class BetterMaze
+12 errors
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ javac BetterMaze.java
+BetterMaze.java:101: error: cannot find symbol
+	    myX = current.getX();
+	    ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:102: error: cannot find symbol
+	    myY = current.getY();
+	    ^
+  symbol:   variable myY
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	             ^
+  symbol:   variable myX
+  location: class BetterMaze
+BetterMaze.java:103: error: cannot find symbol
+	    if (maze[myX][myY]!='E') { 
+	                  ^
+  symbol:   variable myY
+  location: class BetterMaze
+4 errors
+daniel.monteagudo@cslab4-118:~/MKS22-HW/11SpecialMaze$ 
