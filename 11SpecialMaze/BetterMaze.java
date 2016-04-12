@@ -80,15 +80,19 @@ public class BetterMaze {
 	while(placesToGo.hasNext() && maze[current.getX()][current.getY()]!='E') {
 	    if(maze[current.getX()-1][current.getY()]!='.' && maze[current.getX()-1][current.getY()]!='#') {
 		placesToGo.add(new Node(current.getX()-1, current.getY(), current));
+		maze[current.getX()-1][current.getY()] = '.';
 	    }
 	    if(maze[current.getX()+1][current.getY()]!='.' && maze[current.getX()+1][current.getY()]!='#') {
 		placesToGo.add(new Node(current.getX()+1, current.getY(), current));
+		maze[current.getX()+1][current.getY()] = '.';
 	    }
 	    if(maze[current.getX()][current.getY()-1]!='.' && maze[current.getX()][current.getY()-1]!='#') {
 		placesToGo.add(new Node(current.getX(), current.getY()-1, current));
+		maze[current.getX()][current.getY()-1] = '.';
 	    }
 	    if(maze[current.getX()][current.getY()+1]!='.' && maze[current.getX()][current.getY()+1]!='#') {
 		placesToGo.add(new Node(current.getX(), current.getY()+1, current));
+		maze[current.getX()][current.getY()+1] = '.';
 	    }
 	    System.out.println(this);
 	    current = placesToGo.next();
