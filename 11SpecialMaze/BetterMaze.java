@@ -43,7 +43,13 @@ public class BetterMaze {
     public static void main(String[]args) {
 	BetterMaze b = new BetterMaze("data.dat");
 	b.setAnimate(true);
-	System.out.println(b.solveDFS());
+	System.out.println(b.solveBFS());
+	System.out.print("[ ");
+	for ( int i : b.solutionCoordinates() ) {
+	    System.out.print(i + " ");
+	}
+	System.out.println("]");
+	System.out.println(b);
     }
 	    
     public int[] solutionCoordinates(){
@@ -99,22 +105,27 @@ public class BetterMaze {
 	while(placesToGo.hasNext()) {
 	    if(getFriends(current).size()>0) {
 		for (Node friend : getFriends(current)) {
-		    if(maze[friend.getX()][friend.getY()]=='E') return true;
-		    maze[friend.getX()][friend.getY()] = '.';
-		    placesToGo.add(friend);
+		    if(maze[friend.getX()][friend.getY()]=='E') current = friend;
+		    else {
+			maze[friend.getX()][friend.getY()] = '.';
+			placesToGo.add(friend);
+			System.out.println(friend);
+		    }
 		    System.out.println(this);
 		}
-	    }
+		if(maze[current.getX()][current.getY()]=='E') {
+		    while(current.getPrev()!=null) {
+			maze[current.getX()][current.getY()] = '*';
+			solution.add(0,current.getY());
+			solution.add(0, current.getX());
+			current = current.getPrev();
+		    }
+		    return true;
+		}
+	    } 
 	    current = placesToGo.next();
-	    if (maze[current.getX()][current.getY()]=='E') { 
-		return true;
-	    }
 	}
-	while(current.getPrev()!=null) {
-	    solution.add(0,current.getY());
-	    solution.add(0, current.getX());
-	    current = current.getPrev();
-	}
+
 	return false;
     }    
     
