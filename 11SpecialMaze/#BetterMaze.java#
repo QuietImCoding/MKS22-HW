@@ -99,16 +99,13 @@ public class BetterMaze {
 	while(placesToGo.hasNext()) {
 	    if(getFriends(current).size()>0) {
 		for (Node friend : getFriends(current)) {
-		    if(maze[friend.getX()][friend.getY()]=='E') return true;
 		    maze[friend.getX()][friend.getY()] = '.';
 		    placesToGo.add(friend);
 		    System.out.println(this);
 		}
 	    }
 	    current = placesToGo.next();
-	    if (maze[current.getX()][current.getY()]=='E') { 
-		return true;
-	    }
+	    if(maze[friend.getX()][friend.getY()]=='E') return true;
 	}
 	while(current.getPrev()!=null) {
 	    solution.add(0,current.getY());
