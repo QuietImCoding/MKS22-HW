@@ -62,12 +62,28 @@ public class BSTree <T extends <Comparable <T>> {
 	public String toString() {
 	    if(!hasChildren()) {
 		return "" + data + "_ _ ";
+	    } else if (right == null) {
+		return "" + data + toString(left) + "_ ";
+	    } else if (left == null) {
+		return "" + data + "_ " + toString(right);
 	    } else {
 		return data + toString(left) + toString(right);
 	    }
+	}
     }
 
     private Node root;
+    
+    public String toString() {
+	return root.toString();
+    }
 
+    public void add(T value) {
+	if(root==null) {
+	    root = new Node(value);
+	} else {
+	    root.add(value);
+	}
+    }
 
 }
