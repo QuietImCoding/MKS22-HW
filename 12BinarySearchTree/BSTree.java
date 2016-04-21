@@ -9,8 +9,12 @@ public class BSTree <T extends <Comparable <T>> {
 	    this.left = left;
 	    this.right = right;
 	}
+
+	public Node(T data) {
+	    this.data = data;
+	}
 	
-	public boolean hasNext() {
+	public boolean hasChildren() {
 	    return left == null || right == null;
 	}
 
@@ -38,10 +42,28 @@ public class BSTree <T extends <Comparable <T>> {
 	    return right;
 	}
 
-	private void add(T thing) {
-	    if(hasNext()) {
+	public void add(T thing) {
+	    if(hasChildren()) {
+		if(thing > data) {
+		    right.add(thing);
+		}if(thing < data) {
+		    left.add(thing);
+		}
 	    } else {
-		left = thing;
+		if(thing > data) {
+		    this.right = new Node(thing);
+		} 
+		if(thing < data) {
+		    this.left = new Node(thing);
+		}
+	    }
+	}
+
+	public String toString() {
+	    if(!hasChildren()) {
+		return "" + data + "_ _ ";
+	    } else {
+		return data + toString(left) + toString(right);
 	    }
     }
 
