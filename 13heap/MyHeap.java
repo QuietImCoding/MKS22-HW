@@ -5,12 +5,13 @@ public class MyHeap<T extends Comparable<T>> {
     private T[] data;
 
     public MyHeap() {
-	data = new Comparable[1];
+	data = new (T[])Comparable[1];
 	size = 0;
     }
 
     public MyHeap(T[] array) {
-	data = heapify(array);
+	data = array;
+	heapify();
     }
     
     private void pushDown(int k) {
@@ -39,11 +40,11 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     public String toString() {
-	String s = "[ "
+	String s = "[ ";
 	for (int i = 0; i < data.length; i++) {
 	    s += data[i] + " ";
 	}
-	s += "]"
+	s += "]";
     }
     
     //do this last
