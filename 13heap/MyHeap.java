@@ -13,8 +13,23 @@ public class MyHeap<T extends Comparable<T>> {
 	data = array;
 	heapify();
     }
+
+    private int swap(int pos1, int pos2) {
+	int temp = data[pos1];
+	data[pos1] = pos2;
+	data[pos2] = temp;
+	return pos2;
+    }
     
     private void pushDown(int k) {
+	while(data[k] != null && (data[k].compare(data[k*2])<0 || data[k].compare(data[k*2+1])<0)) {
+	    if(data[k].compare(data[k*2])<0) {
+		k = swap(k, k*2);
+		//k*=2;
+	    } else {
+		k = swap(k, k*2+1);
+	    }
+		
     }
 
     private void pushUp(int k) {
@@ -41,7 +56,7 @@ public class MyHeap<T extends Comparable<T>> {
 
     public String toString() {
 	String s = "[ ";
-	for (int i = 0; i < data.length; i++) {
+	for (int i = 1; i < data.length; i++) {
 	    s += data[i] + " ";
 	}
 	s += "]";
