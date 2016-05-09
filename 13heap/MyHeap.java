@@ -29,10 +29,15 @@ public class MyHeap<T extends Comparable<T>> {
 	    } else {
 		k = swap(k, k*2+1);
 	    }
-		
+	}	
     }
 
     private void pushUp(int k) {
+	while(data[k] != null && (data[k].compare(data[k/2])>0)) {
+	    if(data[k].compare(data[k/2])>0) {
+		k = swap(k, k*2);
+	    }
+	}
     }
 
     private void heapify() {
