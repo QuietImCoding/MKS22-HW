@@ -48,7 +48,9 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     public void add(T x) {
-	
+	if(data[size+1]==null) {
+	    data[size+1]==x;
+	}
     }
 
     private void doubleSize() {
