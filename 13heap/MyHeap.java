@@ -11,6 +11,11 @@ public class MyHeap<T extends Comparable<T>> {
 
     public MyHeap(T[] array) {
 	data = array;
+	size = array.length + 1;
+	//data = (T[]) new Comparable[array.length+1];
+	//for(int i = 0 ; i < array.length; i++) {
+	//	    data[i+1] = array[i];
+	//	}
 	heapify();
     }
 
@@ -50,6 +55,19 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     private void heapify() {
+	int position = size/2;
+	while(position>1) {
+	    System.out.println(this);
+	    if(position*2 < data.length) {
+		if(compare(data[position*2], data[position])>0) {
+		    pushUp(position*2);
+		} 
+		if (compare(data[position*2+1], data[position])>0) {
+		    pushUp(position*2+1);
+		}
+		position--;
+	    }
+	}   
     }
 
     public T delete() {
@@ -81,7 +99,7 @@ public class MyHeap<T extends Comparable<T>> {
 
     public String toString() {
 	String s = "[ ";
-	for (int i = 0; i < data.length; i++) {
+	for (int i = 1; i < size; i++) {
 	    s += data[i] + " ";
 	}
 	s += "]";
@@ -98,6 +116,10 @@ public class MyHeap<T extends Comparable<T>> {
 	System.out.println(h);
 	h.add(20);
 	h.add(3);
+	h.add(11);
+	System.out.println(h);
+	Integer[] data = {8, 6, 7, 5, 3, 0, 9};
+	h = new MyHeap<Integer>(data);
 	System.out.println(h);
     }
     
