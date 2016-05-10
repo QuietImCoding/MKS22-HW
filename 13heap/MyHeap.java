@@ -5,7 +5,7 @@ public class MyHeap<T extends Comparable<T>> {
     private T[] data;
 
     public MyHeap() {
-	data = new (T[])Comparable[1];
+	data = (T[]) new Comparable[1]; 
 	size = 0;
     }
 
@@ -15,15 +15,17 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     private int swap(int pos1, int pos2) {
-	int temp = data[pos1];
-	data[pos1] = pos2;
+	T temp = data[pos1];
+	data[pos1] = data[pos2];
 	data[pos2] = temp;
 	return pos2;
     }
-    
+
+    private int compare() {
+	if(
     private void pushDown(int k) {
-	while(data[k] != null && (data[k].compare(data[k*2])<0 || data[k].compare(data[k*2+1])<0)) {
-	    if(data[k].compare(data[k*2])<0) {
+	while(data[k] != null && (compare(data[k],data[k*2])<0 || compare(data[k], data[k*2+1])<0)) {
+	    if(compare(data[k], data[k*2])<0) {
 		k = swap(k, k*2);
 		//k*=2;
 	    } else {
@@ -49,7 +51,7 @@ public class MyHeap<T extends Comparable<T>> {
 
     public void add(T x) {
 	if(data[size+1]==null) {
-	    data[size+1]==x;
+	    data[size+1]=x;
 	}
     }
 
