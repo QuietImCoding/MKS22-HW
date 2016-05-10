@@ -5,8 +5,8 @@ public class MyHeap<T extends Comparable<T>> {
     private T[] data;
 
     public MyHeap() {
-	data = (T[]) new Comparable[1]; 
-	size = 0;
+	data = (T[]) new Comparable[2]; 
+	size = 1;
     }
 
     public MyHeap(T[] array) {
@@ -21,10 +21,16 @@ public class MyHeap<T extends Comparable<T>> {
 	return pos2;
     }
 
-    private int compare() {
-	if(
+    private int compare(T itema, T itemb) {
+	if(true) {
+	    return itema.compareTo(itemb);
+	}
+	return 0;
+    }
+    
     private void pushDown(int k) {
 	while(data[k] != null && (compare(data[k],data[k*2])<0 || compare(data[k], data[k*2+1])<0)) {
+	    System.out.println(this);
 	    if(compare(data[k], data[k*2])<0) {
 		k = swap(k, k*2);
 		//k*=2;
@@ -35,9 +41,10 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     private void pushUp(int k) {
-	while(data[k] != null && (data[k].compare(data[k/2])>0)) {
-	    if(data[k].compare(data[k/2])>0) {
-		k = swap(k, k*2);
+	while(data[k] != null && data[k/2]!=null && (compare(data[k], data[k/2])>0)) {
+	    System.out.println(this);
+	    if(compare(data[k],data[k/2])>0) {
+		k = swap(k, k/2);
 	    }
 	}
     }
@@ -50,14 +57,23 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     public void add(T x) {
-	if(data[size+1]==null) {
-	    data[size+1]=x;
+	System.out.println(size);
+	if(size==0) {
+	    data[1]=x;
+	    size++;
+	} else {
+	    if (size>data.length-1) {
+		doubleSize();
+	    }
+	    data[size] = x;
+	    pushUp(size);
+	    size++;
 	}
     }
 
     private void doubleSize() {
-	T[] temp = new T[data.length*2];
-	for(int i = 0; i < temp.length; i++) {
+	T[] temp = (T[]) new Comparable[data.length*2+1];
+	for(int i = 1; i < data.length; i++) {
 	    temp[i] = data[i];
 	}
 	data = temp;
@@ -65,14 +81,24 @@ public class MyHeap<T extends Comparable<T>> {
 
     public String toString() {
 	String s = "[ ";
-	for (int i = 1; i < data.length; i++) {
+	for (int i = 0; i < data.length; i++) {
 	    s += data[i] + " ";
 	}
 	s += "]";
+	return s;
     }
     
     //do this last
     //public MyHeap(boolean isMax)
     //public MyHeap(T[] array, boolean isMax)
+
+    public static void main(String[]args) {
+	MyHeap<Integer> h = new MyHeap<Integer>();
+	h.add(10);
+	System.out.println(h);
+	h.add(20);
+	h.add(3);
+	System.out.println(h);
+    }
     
 }
