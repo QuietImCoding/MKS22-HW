@@ -1,0 +1,10 @@
+public class RunningMedian {
+    
+    private MyHeap<Integer> bigheap, littleheap;
+    
+    public RunningMedian() {
+	bigheap = new MyHeap<Integer>();
+	littleheap = new MyHeap<Integer>(false);
+    }
+
+}
